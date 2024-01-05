@@ -1,0 +1,30 @@
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+</style>
+<body>
+  <h2>MY TODO'S</h2>
+  <div class="container">
+    <table style="width:100%">
+      <tr>
+        <th>description</th>
+        <th>isDone</th>
+        <th>date</th>
+        <th>delete</th>
+        <th>update</th>
+      </tr>
+      <tr *ngFor="let todo of todos">
+        <td>{{ todo.description }}</td>
+        <td>{{ todo.isDone ? 'Yes' : 'No' }}</td>
+        <td>{{ todo.targetDate | date }}</td>
+        <td><button (click)="deletetodo(todo.id)" class="btn btn-warning">Delete Todo</button></td>
+        <td><button (click)="updatetodo(todo.id)" class="btn btn-warning">Update Todo</button></td>
+      </tr>
+    </table>
+
+    <button (click)="createTodo()" class="btn btn-success">Create Todo</button>
+
+    <div><p *ngIf="msg">{{ msg }}</p></div>
+  </div>
+</body>

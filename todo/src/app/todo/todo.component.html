@@ -1,0 +1,28 @@
+<H1>Todo</H1>
+
+<div class="container">
+  <!-- Use the safe navigation operator for targetDate as well -->
+  <form #todoForm="ngForm">
+
+    <!-- Description input -->
+    <fieldset class="form-group">
+      <label>Description</label>
+      <input type="text" *ngIf="istrue(); else existingTodoField" [(ngModel)]="newtodo.description" class="form-control" name="description">
+      <ng-template #existingTodoField>
+        <input type="text" [(ngModel)]="todo.description" class="form-control" name="description">
+      </ng-template>
+    </fieldset>
+
+    <!-- Use the safe navigation operator for targetDate as well -->
+    <fieldset class="form-group">
+      <label>Target Date</label>
+      <input type="date" *ngIf="istrue(); else existingTargetDateField" [(ngModel)]="newtodo.targetDate" class="form-control" name="targetDate">
+      <ng-template #existingTargetDateField>
+        <input type="date" [(ngModel)]="todo.targetDate" class="form-control" name="targetDate">
+      </ng-template>
+    </fieldset>
+
+    <!-- Example button to trigger saveTodo -->
+    <button (click)="saveTodo()" [disabled]="!todoForm.valid">Save Todo</button>
+  </form>
+</div>
